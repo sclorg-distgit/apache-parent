@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        10
-Release:        14.13%{?dist}
+Release:        14.14%{?dist}
 Summary:        Parent pom file for Apache projects
 License:        ASL 2.0
 URL:            http://apache.org/
@@ -14,12 +14,12 @@ BuildArch:      noarch
 
 BuildRequires:  %{?scl_prefix_java_common}maven-local
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:  maven30-apache-resource-bundles
-BuildRequires:  maven30-maven-remote-resources-plugin
-BuildRequires:  maven30-maven-site-plugin
+BuildRequires:  %{?scl_prefix}apache-resource-bundles
+BuildRequires:  %{?scl_prefix}maven-remote-resources-plugin
+BuildRequires:  %{?scl_prefix}maven-site-plugin
 
-Requires:       maven30-apache-resource-bundles
-Requires:       maven30-maven-site-plugin
+Requires:       %{?scl_prefix}apache-resource-bundles
+Requires:       %{?scl_prefix}maven-site-plugin
 
 %description
 This package contains the parent pom file for apache projects.
@@ -27,7 +27,7 @@ This package contains the parent pom file for apache projects.
 
 %prep
 %setup -n %{pkg_name}-%{version} -Tc
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 # This simplifies work with child projects that can use generics
@@ -41,13 +41,13 @@ cp %{SOURCE1} LICENSE
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -57,6 +57,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 10-14.14
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 10-14.13
 - maven33 rebuild
 
