@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        10
-Release:        14.14%{?dist}
+Release:        14.15%{?dist}
 Summary:        Parent pom file for Apache projects
 License:        ASL 2.0
 URL:            http://apache.org/
@@ -30,10 +30,10 @@ This package contains the parent pom file for apache projects.
 %{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
-# This simplifies work with child projects that can use generics
+# This simplifies work with child projects that can use generics and diamond operators
 cp %{SOURCE0} .
-sed -i 's:<source>1.4</source>:<source>1.5</source>:' pom.xml
-sed -i 's:<target>1.4</target>:<target>1.5</target>:' pom.xml
+sed -i 's:<source>1.4</source>:<source>1.7</source>:' pom.xml
+sed -i 's:<target>1.4</target>:<target>1.7</target>:' pom.xml
 
 %pom_remove_plugin :maven-site-plugin
 
@@ -57,6 +57,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Wed Jan 13 2016 Michal Srb <msrb@redhat.com> - 10-14.15
+- Bump source/target to 1.7
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 10-14.14
 - maven33 rebuild #2
 
