@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        10
-Release:        14.15%{?dist}
+Release:        14.16%{?dist}
 Summary:        Parent pom file for Apache projects
 License:        ASL 2.0
 URL:            http://apache.org/
@@ -12,7 +12,7 @@ Source0:        http://svn.apache.org/repos/asf/maven/pom/tags/apache-10/pom.xml
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 BuildArch:      noarch
 
-BuildRequires:  %{?scl_prefix_java_common}maven-local
+BuildRequires:  %{?scl_prefix}maven-local
 BuildRequires:  %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:  %{?scl_prefix}apache-resource-bundles
 BuildRequires:  %{?scl_prefix}maven-remote-resources-plugin
@@ -57,6 +57,9 @@ set -e -x
 %doc LICENSE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 10-14.16
+- Fix BR on maven-local & co.
+
 * Wed Jan 13 2016 Michal Srb <msrb@redhat.com> - 10-14.15
 - Bump source/target to 1.7
 
