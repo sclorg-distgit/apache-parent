@@ -3,7 +3,7 @@
 
 Name:           %{?scl_prefix}apache-parent
 Version:        18
-Release:        2.1%{?dist}
+Release:        2.2%{?dist}
 Summary:        Parent POM file for Apache projects
 License:        ASL 2.0
 URL:            http://apache.org/
@@ -35,6 +35,9 @@ This package contains the parent pom file for apache projects.
 %doc LICENSE NOTICE
 
 %changelog
+* Thu Jun 22 2017 Michael Simacek <msimacek@redhat.com> - 18-2.2
+- Mass rebuild 2017-06-22
+
 * Wed Jun 21 2017 Java Maintainers <java-maint@redhat.com> - 18-2.1
 - Automated package import and SCL-ization
 
